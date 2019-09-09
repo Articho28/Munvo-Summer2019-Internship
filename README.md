@@ -4,7 +4,7 @@ during the Summer of 2019. The folks over at Munvo were nice enough to let me ke
 in my future projects #designpatterns. Both projects displayed here were created in the context of the CampaignQA application: 
 an entreprise data quality assurance tool. 
 
-*fileimport* 
+**fileimport** 
 This is a jar module that tracks a directory defined in a `config.properties` located in the same location as the built jar. 
 Any it reads the names of the incoming files and makes a request to the main CampaignQA server, which returns the Hive table 
 into which the data file needs to import the file. It then launches a thread to perform the import operation and records it 
@@ -18,5 +18,5 @@ Concepts and Design Patterns applied:
  - Builder Pattern & Factory Pattern: Used in the creation of REST objects to be sent to CampainQA API and Runnable objects.
  - Singleton Pattern: Used in the creation of Configuration class to access to API URLs, directory information, and more. 
  
-*frontend*
+**frontend**
 Contains projects page of UI of the CampainQA webapp. Update coming soon.  
