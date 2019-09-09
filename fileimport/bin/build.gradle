@@ -1,0 +1,36 @@
+apply plugin: 'java-library'
+
+group 'com.munvo.fileimport'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  compile fileTree(dir: 'lib', include: '*.jar')
+  //compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+  //compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.6.0'
+  compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.7.7'
+  compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '2.7.7'
+}
+
+jar {
+  manifest {
+    attributes(
+            'Implementation-title': project.name,
+            'Main-Class': 'com.munvo.fileimport.Main'
+    )
+  }
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+
+task buildJar(type: Copy){
+  dependsOn jar
+}
